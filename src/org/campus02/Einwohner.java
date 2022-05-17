@@ -2,7 +2,7 @@ package org.campus02;
 
 import java.util.Objects;
 
-public class Einwohner {
+public class Einwohner implements Comparable<Einwohner> {
 
     private int id;
     private String name;
@@ -71,5 +71,14 @@ public class Einwohner {
                 ", bundesland='" + bundesland + '\'' +
                 ", geburtsjahr=" + geburtsjahr +
                 '}';
+    }
+
+    @Override
+    public int compareTo(Einwohner other) {
+        int res = this.getName().compareTo(other.getName());
+        if (res == 0) {
+            res = Integer.compare(this.getId(), other.getId());
+        }
+        return res;
     }
 }
